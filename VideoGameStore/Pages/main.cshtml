@@ -1,0 +1,123 @@
+﻿@page
+@model VideoGameStore.Pages.mainModel
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStore - Your Ultimate Video Game Store</title>
+    <style>
+        body {
+            background-color: #242739;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            padding-top: 150px;
+        }
+
+        .container {
+            background-color: #343a40;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .featured-games {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .game {
+            background-color: #444c56;
+            border-radius: 10px;
+            padding: 20px;
+            width: 45%;
+            box-sizing: border-box;
+        }
+
+            .game img {
+                max-width: 100%;
+                border-radius: 10px;
+            }
+
+            .game h2 {
+                margin: 10px 0;
+            }
+
+            .game p {
+                margin: 10px 0;
+            }
+
+        footer {
+            margin-top: 30px;
+            color: #ccc;
+        }
+
+        a {
+            color: #8e44ad;
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #8e44ad;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #a053ba;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to GameStore</h1>
+        <p>Your ultimate destination for the latest video games!</p>
+        <div class="featured-games">
+            <div class="game">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/header.jpg?t=1716985808" alt="Game 1">
+                <h2>Rainbow Six Siege</h2>
+                <p>Exciting action-packed game.</p>
+                <button>Add to cart</button>
+            </div>
+            <div class="game">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/578080/header.jpg?t=1718006494" alt="Game 2">
+                <h2>PUBG</h2>
+                <p>FPS game with stunning visuals.</p>
+                <button>Add to cart</button>
+            </div>
+            <div class="game">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/774361/header.jpg?t=1713169475" alt="Game 3">
+                <h2>Blasphemous</h2>
+                <p>Platforming game that will test your mind.</p>
+                <button>Add to cart</button>
+            </div>
+            <div class="game">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg?t=1717876415" alt="Game 4">
+                <h2>Forza Horizon 5</h2>
+                <p>Racing game for endless fun.</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+        <footer>
+            <p>2024 GameStore. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

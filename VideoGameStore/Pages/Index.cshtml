@@ -1,0 +1,136 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+        background-color: #242739;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background-color: #343a40;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        max-width: 400px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    h1 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    a {
+        color: #8e44ad;
+        text-decoration: none;
+    }
+
+    button {
+        background-color: #8e44ad;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background-color:   #a053ba;
+        }
+</style>
+<body>
+    <div class="login-box">
+        <h2>Welcome Back</h2>
+        <form method="post">
+            <label for="username">Username or Email:</label>
+            <input type="text" id="username" name="username" required>
+            <p></p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <p></p>
+            <button type="submit">Log In</button>
+            <p></p>
+            <a href="http://localhost:5110/forgot_password">Forgot your password?</a>
+
+        </form>
+        <p>Don't have an account? <a href="http://localhost:5110/register">Create a new one</a></p>
+    </div>
+    <script>
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const forgotLink = document.getElementById('forgot-link');
+        const loginButton = document.getElementById('login-button');
+
+        loginButton.addEventListener('click', async () => {
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success) {
+                        window.location.href = '/home';
+                    } else {
+                        alert('Invalid username or password');
+                    }
+                } else {
+                    errorMessage.textContent = 'Please enter a valid email address.';
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+
+        forgotLink.addEventListener('click', () => {
+            window.location.href = '/recover';
+        });
+
+        }</script>
+</body>
+

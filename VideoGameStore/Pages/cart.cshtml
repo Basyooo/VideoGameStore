@@ -1,0 +1,125 @@
+﻿@page
+@model VideoGameStore.Pages.cartModel
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            background-color: #242739;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            padding-top: 150px;
+        }
+
+        .container {
+            background-color: #343a40;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .cart-item {
+            background-color: #444c56;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+            .cart-item img {
+                max-width: 150px;
+                border-radius: 10px;
+                margin-right: 20px;
+            }
+
+        .cart-item-details {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .cart-total {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .cart-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background-color: #8e44ad;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #a053ba;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div id="cart-items">
+            <div class="cart-item">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/header.jpg?t=1716985808" alt="Rainbow Six Siege">
+                <div class="cart-item-details">
+                    <h3>Rainbow Six Siege</h3>
+                    <p>Exciting action-packed game.</p>
+                    <p>Price: $29.99</p>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/578080/header.jpg?t=1718006494" alt="PUBG">
+                <div class="cart-item-details">
+                    <h3>PUBG</h3>
+                    <p>FPS game with stunning visuals.</p>
+                    <p>Price: $19.99</p>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/774361/header.jpg?t=1713169475" alt="Blasphemous">
+                <div class="cart-item-details">
+                    <h3>Blasphemous</h3>
+                    <p>Platforming game that will test your mind.</p>
+                    <p>Price: $24.99</p>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg?t=1717876415" alt="Forza Horizon 5">
+                <div class="cart-item-details">
+                    <h3>Forza Horizon 5</h3>
+                    <p>Racing game for endless fun.</p>
+                    <p>Price: $49.99</p>
+                </div>
+            </div>
+        </div>
+        <div class="cart-total">
+            Total: $124.96
+        </div>
+        <div class="cart-buttons">
+            <button onclick="window.location.href='/main'">Home Page</button>
+            <button onclick="window.location.href='/Payment'">Proceed to Payment</button>
+        </div>
+    </div>
+</body>
+</html>

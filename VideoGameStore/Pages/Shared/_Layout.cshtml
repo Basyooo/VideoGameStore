@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-eF7Eopm8fhIjr1QnupXqk6BNMyTzdeWC9xRLq5ulAwD75BAPpD4Sn0Zm00LiEph/7arD/aVXZHBk3NTYGfTjuA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @RenderSection("Styles", required: false)
+</head>
+<style>
+    .navbar {
+        background-color: #242739;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    }
+
+    .navbar-nav {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .nav-item {
+        margin-right: 20px;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+        .nav-link:hover {
+            color: #8e44ad;
+        }
+
+    .search-form {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+
+    .search-input {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+    }
+
+    .search-button {
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .search-button:hover {
+            background-color: #a053ba;
+        }
+
+
+
+</style>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="http://localhost:5110/main" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost:5110/Cart" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="http://localhost:5110/Del_Acc" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Delete Account
+                    </a>
+                </li>
+            </ul>
+            <form class="search-form" action="#" method="get">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+            </form>
+        </nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-4+MVsZa7eYbNwtFbwdtxv8m+KtRsz4j2qpF5hFo8Fv1EoBUIe1Ck9BmqmA2Ys5PpCCUJt5zIg9t8+2UY39eVvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
