@@ -1,0 +1,64 @@
+﻿@page
+@model VideoGameStore.Pages.succesfulModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Successful Purchase</title>
+    <style>
+        body {
+            background-color: #242739;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            padding-top: 150px;
+        }
+
+        .container {
+            background-color: #343a40;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #8e44ad;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #a053ba;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Successful Purchase!</h1>
+        <p class="success-message">Your purchase has been successful.</p>
+        <button onclick="window.location.href='/main'">Back to Homepage</button>
+    </div>
+</body>
+</html>

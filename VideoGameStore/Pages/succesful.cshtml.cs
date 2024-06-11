@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VideoGameStore.Pages
 {
-    public class paymentModel : PageModel
+    public class succesfulModel : PageModel
     {
-
+        public void OnGet()
+        {
+        }
     }
 }

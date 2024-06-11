@@ -4,11 +4,11 @@ using System.Data.SqlClient;
 
 namespace VideoGameStore.Pages
 {
-    public class cartModel : PageModel
+    public class payment4Model : PageModel
     {
         public IActionResult OnPost()
         {
-            string gameName = "All";
+            string gameName = "Forza Horizon 5";
             string email = Request.Form["email"];
             string user = Request.Form["user"];
 
