@@ -8,7 +8,6 @@ namespace VideoGameStore.Pages
     {
         public IActionResult OnPost()
         {
-            string gameName = "PUBG";
             string email = Request.Form["email"];
             string user = Request.Form["user"];
 
@@ -17,7 +16,7 @@ namespace VideoGameStore.Pages
             SqlConnection connection = new SqlConnection(connectionString);
 
             connection.Open();
-            string query = "UPDATE Users SET games_bought =" + "'" + gameName + "'" + "WHERE Email =" + "'" + email + "'" + " OR User_name =" + "'" + user + "'";
+            string query = "UPDATE Users SET bought_pubg =" + "'Yes'" + "WHERE Email =" + "'" + email + "'" + " OR User_name =" + "'" + user + "'";
             SqlCommand command = new SqlCommand(query, connection);
             command.ExecuteNonQuery();
 
