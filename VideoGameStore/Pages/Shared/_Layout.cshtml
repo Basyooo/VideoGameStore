@@ -1,79 +1,76 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-eF7Eopm8fhIjr1QnupXqk6BNMyTzdeWC9xRLq5ulAwD75BAPpD4Sn0Zm00LiEph/7arD/aVXZHBk3NTYGfTjuA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @RenderSection("Styles", required: false)
+    <title>@ViewData["Title"] - VideoGameStore</title>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <style>
+        .navbar {
+            background-color: #242739;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        .navbar-nav {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+            .nav-link:hover {
+                color: #8e44ad;
+            }
+    </style>
 </head>
-<style>
-    .navbar {
-        background-color: #242739;
-        color: white;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 999;
-    }
-
-    .navbar-nav {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .nav-item {
-        margin-right: 20px;
-    }
-
-    .nav-link {
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-    }
-
-        .nav-link:hover {
-            color: #8e44ad;
-        }
-
-        .signout{
-            margin-right:40px
-        }
-
-
-</style>
 <body>
     <header>
         <nav class="navbar">
             <ul class="navbar-nav">
-                <a href="@Url.Page("/main")" class="nav-link">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="@Url.Page("/Cart")" class="nav-link">
-                    <i class="fas fa-shopping-cart"></i> Cart
-                </a>
-                <a href="@Url.Page("/Del_Acc")" class="nav-link">
-                    <i class="fas fa-user-times"></i> Delete Account
-                </a>
-                <a href="@Url.Page("/index")" class="nav-link signout">
-                    <i class="fas fa-sign-out-alt"></i> Sign out
-                </a>
-
+                <li class="nav-item">
+                    <a href="/Main" class="nav-link">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Cart" class="nav-link">
+                        Cart
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Account/Logout" class="nav-link">
+                        Sign out
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>
-    <div>
+
+    <main>
         @RenderBody()
-    </div>
+    </main>
 
     @RenderSection("Scripts", required: false)
 </body>

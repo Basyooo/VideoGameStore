@@ -1,60 +1,45 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace VideoGameStore.Pages
 {
-    public class CartModel : PageModel
+    public class cartModel : PageModel
     {
-        public List<CartItem> CartItems { get; set; } = new List<CartItem>();
-        public decimal TotalPrice { get; set; }
-
-        public void OnGet()
+        public IActionResult OnPost()
         {
-            string connectionString = "Data Source=DESKTOP-0MC143Q\\BASYO; database=VideoGame; Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "SELECT Name, Price, ImageUrl FROM Cart";
-                SqlCommand command = new SqlCommand(query, connection);
-                SqlDataReader reader = command.ExecuteReader();
+            string gameName = "All";
+            string email = Request.Form["email"];
+            string user = Request.Form["user"];
 
-                while (reader.Read())
+            string connectionString = "Data Source=DESKTOP-0MC143Q\\BASYO; database=VideoGame; Integrated Security=True";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    CartItems.Add(new CartItem
+                    connection.Open();
+
+                    // Use parameterized query for security
+                    string query = "UPDATE Users SET games_bought = @gameName WHERE Email = @Email OR User_name = @UserName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        Name = reader.GetString(0),
-                        Price = reader.GetDecimal(1),
-                        ImageUrl = reader.GetString(2)
-                    });
-                    TotalPrice += reader.GetDecimal(1);
+                        command.Parameters.AddWithValue("@gameName", gameName);
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.Parameters.AddWithValue("@UserName", user);
+
+                        command.ExecuteNonQuery();
+                    }
                 }
             }
-        }
-
-        public IActionResult OnPostCheckout(string email, string user)
-        {
-            string connectionString = "Data Source=DESKTOP-0MC143Q\\BASYO; database=VideoGame; Integrated Security=True";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            catch (Exception ex)
             {
-                connection.Open();
-                string query = "UPDATE Users SET games_bought = 'All' WHERE Email = @Email OR User_name = @User";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@User", user);
-                command.ExecuteNonQuery();
+                // Log error
+                Console.WriteLine($"Error: {ex.Message}");
+                return RedirectToPage("/error");
             }
 
             return RedirectToPage("/successful");
         }
-    }
-
-    public class CartItem
-    {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string ImageUrl { get; set; }
     }
 }
